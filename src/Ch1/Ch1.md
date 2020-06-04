@@ -7,7 +7,7 @@ We’ll give you a lambda expression. Keeping in mind both alpha equivalence and
 2. 𝜆𝑥𝑦.𝑥𝑥𝑦
   c) 𝜆𝑎(𝜆𝑏.𝑎𝑎𝑏)
 
-3.𝜆𝑥𝑦𝑧.𝑧𝑥
+3. 𝜆𝑥𝑦𝑧.𝑧𝑥
   b) 𝜆𝑡𝑜𝑠.𝑠
 
 ### Chapter Exercises
