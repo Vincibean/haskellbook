@@ -1,4 +1,5 @@
-### Intermission: Equivalence Exercises
+# Chapter 1
+## Intermission: Equivalence Exercises
 We’ll give you a lambda expression. Keeping in mind both alpha equivalence and how multiple heads are nested, choose an answer that is equivalent to the listed lambda term
 
 1. 𝜆𝑥𝑦.𝑥𝑧
@@ -10,8 +11,8 @@ We’ll give you a lambda expression. Keeping in mind both alpha equivalence and
 3. 𝜆𝑥𝑦𝑧.𝑧𝑥
   b) 𝜆𝑡𝑜𝑠.𝑠
 
-### Chapter Exercises
-#### Combinators
+## Chapter Exercises
+### Combinators
 Determine if each of the following are combinators or not.
 
 Since "A combinator is a lambda term with no free variables":
@@ -31,7 +32,7 @@ This is a combinator: every variable is bound.
 5. 𝜆𝑥𝑦.𝑥𝑦(𝑧𝑥𝑦)
 This isn't a combinator: z isn't bound.
 
-#### Normal form or diverge?
+### Normal form or diverge?
 Determine if each of the following can be reduced to a normal form or if they diverge.
 
 1. 𝜆𝑥.𝑥𝑥𝑥
@@ -45,7 +46,7 @@ We're back to where we started. This doesn't converge to normal form, so it dive
 Becomes: (𝜆[𝑥 := z].𝑥𝑥𝑥) => zzz
 Can't be reduced more; it doesn't diverge, so it's in normal form.
 
-#### Beta reduce
+### Beta reduce
 Evaluate (that is, beta reduce) each of the following expressions to normal form. We strongly recommend writing out the steps on paper with a pencil or pen.
 
 1. (𝜆𝑎𝑏𝑐.𝑐𝑏𝑎)𝑧𝑧(𝜆𝑤𝑣.𝑤)
