@@ -43,11 +43,13 @@ This won't compile: single quotes (`'`) denote a character, not a string; in ord
 ```"<3" ++ " Haskell"```
 
 3. ```concat ["<3", " Haskell"]```
+
 This compiles.
 
 ## Reading syntax
 1. For the following lines of code, read the syntax carefully and decide if they are written correctly. 
 Test them in your REPL after you’ve decided to check your work. Correct as many as you can.
+
 a) ```concat [[1, 2, 3], [4, 5, 6]]```
 
   It will compile
@@ -81,6 +83,7 @@ h) ```take 3 "awesome"```
   It will compile
 
 2. 
+
 a) ```concat [[1*6], [2*6], [3*6]]```
 
   ```[6,12,18]```
@@ -103,5 +106,5 @@ e)
           tail [4, 5, 6],
           tail [7, 8, 9]]
   ```
-  
+
   ```[2,3,5,6,8,9]```
