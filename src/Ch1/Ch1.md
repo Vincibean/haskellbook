@@ -32,12 +32,12 @@ Determine if each of the following can be reduced to a normal form or if they di
 #### 1. 𝜆𝑥.𝑥𝑥𝑥
 Can't be reduced more; it doesn't diverge, so it's in normal form.
 #### 2. (𝜆𝑧.𝑧𝑧)(𝜆𝑦.𝑦𝑦)
-Becomes `(𝜆[z := 𝜆𝑦.𝑦𝑦].𝑧𝑧)` => (𝜆𝑦.𝑦𝑦)(𝜆𝑦.𝑦𝑦)
+Becomes `(𝜆[z := 𝜆𝑦.𝑦𝑦].𝑧𝑧) => (𝜆𝑦.𝑦𝑦)(𝜆𝑦.𝑦𝑦)`
 
 We're back to where we started. This doesn't converge to normal form, so it diverges.
 
 #### 3. (𝜆𝑥.𝑥𝑥𝑥)𝑧
-Becomes: (𝜆[𝑥 := z].𝑥𝑥𝑥) => zzz
+Becomes: `(𝜆[𝑥 := z].𝑥𝑥𝑥) => zzz`
 
 Can't be reduced more; it doesn't diverge, so it's in normal form.
 
