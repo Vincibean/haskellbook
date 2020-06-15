@@ -22,3 +22,16 @@ data Mood = Blah | Woot deriving Show
 changeMood :: Mood -> Mood
 changeMood Blah = Woot
 changeMood _    = Blah
+
+-- Exercises: Find the Mistakes
+-- The following lines of code may have mistakes — some of them won’t compile! You know what you need to do.
+-- 1. not True && true
+ftm1 = not True && True
+-- 2. not (x = 6)
+ftm2 = let x = 6 in not (x == 6)
+-- 3. (1 * 2) > 5
+ftm3 = (1 * 2) > 5 -- same
+-- 4. [Merry] > [Happy]
+ftm4 = ["Merry"] > ["Happy"]
+-- 5. [1, 2, 3] ++ "look at me!"
+ftm5 = ['1', '2', '3'] ++ "look at me!"

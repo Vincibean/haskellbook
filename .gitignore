@@ -1,6 +1,7 @@
 .stack-work/
 *~
 stack.yaml.lock
+haskellbook.cabal
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/haskell,vim,emacs,visualstudiocode,linux,macos,windows,intellij+all,git
