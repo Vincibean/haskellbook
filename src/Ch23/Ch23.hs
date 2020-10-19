@@ -101,8 +101,7 @@ instance Monad (Moi s) where
   (Moi f) >>= g = Moi $ \s ->
     let (a, s') = f s
         moisb   = g a
-        res     = runMoi moisb s'
-    in  res
+    in runMoi moisb s'
 
 -- FizzBuzz differently
 fizzBuzz :: Integer -> String
