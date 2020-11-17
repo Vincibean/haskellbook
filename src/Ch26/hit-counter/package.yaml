@@ -1,0 +1,18 @@
+name:                hit-counter
+version:             0.1.0.0
+
+dependencies:
+- base >= 4.7 && < 5
+- transformers
+- containers
+- text
+- scotty
+
+executables:
+  hit-counter-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
