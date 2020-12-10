@@ -30,6 +30,9 @@ dependencies:
 - parsers
 - trifecta
 - aeson
+- criterion
+- containers
+- vector
 - dlist
 - raw-strings-qq
 
