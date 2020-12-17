@@ -1,0 +1,24 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: d5ad13d2ce812fd6bb81e3c568597b80fc84d013e745bfbd5858d268a428c200
+
+name:           loci
+version:        0.1.0.0
+build-type:     Simple
+
+executable loci-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_loci
+  hs-source-dirs:
+      app
+  ghc-options: -prof -fprof-auto -rtsopts -O2
+  build-depends:
+      base >=4.7 && <5
+    , criterion
+    , vector
+  default-language: Haskell2010

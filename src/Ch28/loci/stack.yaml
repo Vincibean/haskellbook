@@ -1,0 +1,8 @@
+resolver: lts-16.15
+
+packages:
+- .
+
+build:
+  library-profiling: true
+  executable-profiling: true

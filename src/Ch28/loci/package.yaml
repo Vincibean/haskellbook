@@ -1,0 +1,17 @@
+name:                loci
+version:             0.1.0.0
+
+dependencies:
+- base >= 4.7 && < 5
+- vector
+- criterion
+
+executables:
+  loci-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -prof 
+    - -fprof-auto 
+    - -rtsopts 
+    - -O2
