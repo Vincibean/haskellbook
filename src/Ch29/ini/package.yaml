@@ -1,0 +1,48 @@
+name:                ini
+version:             0.1.0.0
+
+dependencies:
+- base >= 4.7 && < 5
+- bytestring
+- text
+- scientific
+- time
+- transformers
+- random
+- parsers
+- trifecta
+- directory
+- cmdargs
+- aeson
+- criterion
+- containers
+- vector
+- dlist
+- raw-strings-qq
+- filepath
+
+library:
+  source-dirs: src
+
+executables:
+  ini-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - ini
+
+tests:
+  ini-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - ini
+    - hspec
