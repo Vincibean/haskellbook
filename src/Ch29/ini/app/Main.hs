@@ -2,6 +2,7 @@
 
 module Main where
 
+import Types
 import           Control.Monad
 import Data.Ini
 import           Data.Map                       ( Map )
@@ -24,14 +25,6 @@ import Text.Trifecta.Result
 -- file extension .ini.
 
 -- https://hackage.haskell.org/package/directory-1.3.6.1/docs/System-Directory.html#v:listDirectory
-
-type Extension = String
-type Path = String
-
-data File = File { path :: Path, filename :: FilePath , extension :: Extension } deriving (Show, Eq)
-
-fullPath :: File -> FilePath
-fullPath f = path f <> "/" <> filename f
 
 data Ini = Ini { directory :: FilePath } deriving (Eq, Show, Data, Typeable)
 
@@ -57,18 +50,3 @@ asFileInDir path filename = File path filename $ takeExtension filename
 
 byExtension :: Extension -> File -> Bool
 byExtension ext file = extension file == ext
-
-parseIniFile :: File -> IO (Map FilePath Config)
-parseIniFile file = do 
-    let path = fullPath file
-    handle <- openFile path ReadMode
-    contents <- hGetContents handle
-    config <- asIO $ parseString parseIni mempty contents
-    hClose handle 
-    let name = filename file
-    return $ M.singleton name config 
-
-
-asIO :: Result a -> IO a
-asIO = foldResult err pure
-  where err e = hPrint stderr e >> exitWith (ExitFailure 2) 

@@ -4,6 +4,7 @@ module Data.Ini
   ( parseAssignment
   , parseHeader
   , parseIni
+  , parseIniFile
   , parseSection
   , skipComments
   , Config(Config)
@@ -11,6 +12,8 @@ module Data.Ini
   , Section(Section)
   )
 where
+
+import Types
 
 import           Control.Applicative            ( Alternative(some, (<|>)) )
 import           Data.ByteString                ( ByteString )
@@ -22,22 +25,17 @@ import           Data.Text                      ( Text )
 import qualified Data.Text.IO                  as TIO
 import           Text.Trifecta                  ( some
                                                 , Parser
+                                                , foldResult
                                                 , letter
                                                 , noneOf
                                                 , oneOf
+                                                , parseString
                                                 , CharParsing(char)
                                                 , Parsing(skipMany)
+                                                , Result
                                                 )
-
-newtype Header = Header String deriving (Eq, Ord, Show)
-
-data Section = Section Header Assignments deriving (Eq, Show)
-
-newtype Config = Config (Map Header Assignments) deriving (Eq, Show)
-
-type Name = String
-type Value = String
-type Assignments = Map Name Value
+import           System.Exit
+import           System.IO
 
 parseBracketPair :: Parser a -> Parser a
 parseBracketPair p = char '[' *> p <* char ']'
@@ -88,3 +86,17 @@ parseIni = do
   sections <- some parseSection
   let mapOfSections = foldr rollup M.empty sections
   return (Config mapOfSections)
+
+parseIniFile :: File -> IO (Map FilePath Config)
+parseIniFile file = do 
+    let path = fullPath file
+    handle <- openFile path ReadMode
+    contents <- hGetContents handle
+    config <- asIO $ parseString parseIni mempty contents
+    hClose handle 
+    let name = filename file
+    return $ M.singleton name config 
+
+asIO :: Result a -> IO a
+asIO = foldResult err pure
+  where err e = hPrint stderr e >> exitWith (ExitFailure 2) 

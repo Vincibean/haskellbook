@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 85e35949782043e0a3b34190d25b0d88f9f49b7be56e443f9e8bef9a1d16517b
+-- hash: d2d827733309f8b3fbc4b603af21bd67b3ce9734666e263acc4271ec62221126
 
 name:           ini
 version:        0.1.0.0
@@ -13,6 +13,7 @@ build-type:     Simple
 library
   exposed-modules:
       Data.Ini
+      Types
   other-modules:
       Paths_ini
   hs-source-dirs:
