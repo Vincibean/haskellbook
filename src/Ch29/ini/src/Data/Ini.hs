@@ -13,15 +13,15 @@ module Data.Ini
   )
 where
 
-import Types
-    ( Assignments,
-      Value,
-      Name,
-      Config(..),
-      Section(..),
-      Header(..),
-      File(filename),
-      fullPath )
+import           Types                          ( Assignments
+                                                , Value
+                                                , Name
+                                                , Config(..)
+                                                , Section(..)
+                                                , Header(..)
+                                                , File(filename)
+                                                , fullPath
+                                                )
 
 import           Control.Applicative            ( Alternative(some, (<|>)) )
 import           Data.Char                      ( isAlpha )
@@ -39,14 +39,16 @@ import           Text.Trifecta                  ( some
                                                 , Parsing(skipMany)
                                                 , Result
                                                 )
-import System.Exit ( exitWith, ExitCode(ExitFailure) )
-import System.IO
-    ( hClose,
-      openFile,
-      stderr,
-      hGetContents,
-      hPrint,
-      IOMode(ReadMode) )
+import           System.Exit                    ( exitWith
+                                                , ExitCode(ExitFailure)
+                                                )
+import           System.IO                      ( hClose
+                                                , openFile
+                                                , stderr
+                                                , hGetContents
+                                                , hPrint
+                                                , IOMode(ReadMode)
+                                                )
 
 parseBracketPair :: Parser a -> Parser a
 parseBracketPair p = char '[' *> p <* char ']'
@@ -99,15 +101,15 @@ parseIni = do
   return (Config mapOfSections)
 
 parseIniFile :: File -> IO (Map FilePath Config)
-parseIniFile file = do 
-    let path = fullPath file
-    handle <- openFile path ReadMode
-    contents <- hGetContents handle
-    config <- asIO $ parseString parseIni mempty contents
-    hClose handle 
-    let name = filename file
-    return $ M.singleton name config 
+parseIniFile file = do
+  let path = fullPath file
+  handle   <- openFile path ReadMode
+  contents <- hGetContents handle
+  config   <- asIO $ parseString parseIni mempty contents
+  hClose handle
+  let name = filename file
+  return $ M.singleton name config
 
 asIO :: Result a -> IO a
 asIO = foldResult err pure
-  where err e = hPrint stderr e >> exitWith (ExitFailure 2) 
+  where err e = hPrint stderr e >> exitWith (ExitFailure 2)
