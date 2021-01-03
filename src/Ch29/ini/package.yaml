@@ -3,22 +3,11 @@ version:             0.1.0.0
 
 dependencies:
 - base >= 4.7 && < 5
-- bytestring
-- text
-- scientific
-- time
-- transformers
-- random
 - parsers
 - trifecta
 - directory
 - cmdargs
-- aeson
-- criterion
 - containers
-- vector
-- dlist
-- raw-strings-qq
 - filepath
 
 library:
@@ -46,3 +35,5 @@ tests:
     dependencies:
     - ini
     - hspec
+    - bytestring
+    - raw-strings-qq

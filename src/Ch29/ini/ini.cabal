@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d2d827733309f8b3fbc4b603af21bd67b3ce9734666e263acc4271ec62221126
+-- hash: dac9ca9c06e53db36d54e11bc478d9356482c9a420678266212e5fe1931acfc1
 
 name:           ini
 version:        0.1.0.0
@@ -19,24 +19,13 @@ library
   hs-source-dirs:
       src
   build-depends:
-      aeson
-    , base >=4.7 && <5
-    , bytestring
+      base >=4.7 && <5
     , cmdargs
     , containers
-    , criterion
     , directory
-    , dlist
     , filepath
     , parsers
-    , random
-    , raw-strings-qq
-    , scientific
-    , text
-    , time
-    , transformers
     , trifecta
-    , vector
   default-language: Haskell2010
 
 executable ini-exe
@@ -47,25 +36,14 @@ executable ini-exe
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
-    , base >=4.7 && <5
-    , bytestring
+      base >=4.7 && <5
     , cmdargs
     , containers
-    , criterion
     , directory
-    , dlist
     , filepath
     , ini
     , parsers
-    , random
-    , raw-strings-qq
-    , scientific
-    , text
-    , time
-    , transformers
     , trifecta
-    , vector
   default-language: Haskell2010
 
 test-suite ini-test
@@ -78,24 +56,15 @@ test-suite ini-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
-    , base >=4.7 && <5
+      base >=4.7 && <5
     , bytestring
     , cmdargs
     , containers
-    , criterion
     , directory
-    , dlist
     , filepath
     , hspec
     , ini
     , parsers
-    , random
     , raw-strings-qq
-    , scientific
-    , text
-    , time
-    , transformers
     , trifecta
-    , vector
   default-language: Haskell2010

@@ -2,19 +2,35 @@
 
 module Main where
 
-import Types
-import           Control.Monad
-import Data.Ini
+import Types ( Extension, File(File, extension) )
+import Control.Monad ( unless )
+import Data.Ini ( parseIniFile )
 import           Data.Map                       ( Map )
 import qualified Data.Map                      as M
-import           System.Console.CmdArgs
-import System.Directory
-import           System.Exit
-import System.FilePath
-import           System.IO
+import System.Console.CmdArgs
+    ( Data,
+      Typeable,
+      (&=),
+      cmdArgs,
+      help,
+      opt,
+      summary,
+      typFile,
+      verbosity,
+      Default(def) )
+import System.Directory ( doesPathExist, listDirectory )
+import System.Exit ( exitWith, ExitCode(ExitFailure) )
+import System.FilePath ( takeExtension )
+import System.IO
+    ( hClose,
+      openFile,
+      stderr,
+      hGetContents,
+      hPutStrLn,
+      hPrint,
+      IOMode(ReadMode) )
 
-import           Text.Trifecta
-import Text.Trifecta.Result
+import Text.Trifecta ( parseString, foldResult, Result )
 
 
 

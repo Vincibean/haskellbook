@@ -2,8 +2,6 @@ module Types where
 
 import           Data.Map                       ( Map )
 
-import qualified Data.Map                      as M
-
 newtype Header = Header String deriving (Eq, Ord, Show)
 
 data Section = Section Header Assignments deriving (Eq, Show)

@@ -14,15 +14,20 @@ module Data.Ini
 where
 
 import Types
+    ( Assignments,
+      Value,
+      Name,
+      Config(..),
+      Section(..),
+      Header(..),
+      File(filename),
+      fullPath )
 
 import           Control.Applicative            ( Alternative(some, (<|>)) )
-import           Data.ByteString                ( ByteString )
 import           Data.Char                      ( isAlpha )
 import           Data.Map                       ( Map )
 
 import qualified Data.Map                      as M
-import           Data.Text                      ( Text )
-import qualified Data.Text.IO                  as TIO
 import           Text.Trifecta                  ( some
                                                 , Parser
                                                 , foldResult
@@ -34,8 +39,14 @@ import           Text.Trifecta                  ( some
                                                 , Parsing(skipMany)
                                                 , Result
                                                 )
-import           System.Exit
-import           System.IO
+import System.Exit ( exitWith, ExitCode(ExitFailure) )
+import System.IO
+    ( hClose,
+      openFile,
+      stderr,
+      hGetContents,
+      hPrint,
+      IOMode(ReadMode) )
 
 parseBracketPair :: Parser a -> Parser a
 parseBracketPair p = char '[' *> p <* char ']'
