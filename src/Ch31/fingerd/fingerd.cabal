@@ -1,0 +1,60 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 0f809aa257120d18cf62e666269d77f0b70bd0721ffb1beb6b9bacdf1f6635e7
+
+name:           fingerd
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/fingerd#readme>
+homepage:       https://github.com/githubuser/fingerd#readme
+bug-reports:    https://github.com/githubuser/fingerd/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2021 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/fingerd
+
+executable debug
+  main-is: Debug.hs
+  other-modules:
+      Main
+      Paths_fingerd
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -main-is Debug
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , network
+    , raw-strings-qq
+    , sqlite-simple
+    , text
+  default-language: Haskell2010
+
+executable fingerd
+  main-is: Main.hs
+  other-modules:
+      Debug
+      Paths_fingerd
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -main-is Main
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , network
+    , raw-strings-qq
+    , sqlite-simple
+    , text
+  default-language: Haskell2010
