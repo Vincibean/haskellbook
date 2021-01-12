@@ -4,9 +4,9 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0f809aa257120d18cf62e666269d77f0b70bd0721ffb1beb6b9bacdf1f6635e7
+-- hash: 17ba58ae71978649637f918b72ac45ab39bd797b7d76e79f54d455fb78d722ad
 
-name:           fingerd
+name:           finger
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/fingerd#readme>
 homepage:       https://github.com/githubuser/fingerd#readme
@@ -25,17 +25,38 @@ source-repository head
   type: git
   location: https://github.com/githubuser/fingerd
 
+library
+  exposed-modules:
+      Database
+      Types
+  other-modules:
+      Paths_finger
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cmdargs
+    , network
+    , raw-strings-qq
+    , sqlite-simple
+    , text
+  default-language: Haskell2010
+
 executable debug
   main-is: Debug.hs
   other-modules:
       Main
-      Paths_fingerd
+      Useradd
+      Paths_finger
   hs-source-dirs:
-      src
+      app
   ghc-options: -Wall -main-is Debug
   build-depends:
       base >=4.7 && <5
     , bytestring
+    , cmdargs
+    , finger
     , network
     , raw-strings-qq
     , sqlite-simple
@@ -46,13 +67,36 @@ executable fingerd
   main-is: Main.hs
   other-modules:
       Debug
-      Paths_fingerd
+      Useradd
+      Paths_finger
   hs-source-dirs:
-      src
+      app
   ghc-options: -Wall -main-is Main
   build-depends:
       base >=4.7 && <5
     , bytestring
+    , cmdargs
+    , finger
+    , network
+    , raw-strings-qq
+    , sqlite-simple
+    , text
+  default-language: Haskell2010
+
+executable useradd
+  main-is: Useradd.hs
+  other-modules:
+      Debug
+      Main
+      Paths_finger
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -main-is Useradd
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cmdargs
+    , finger
     , network
     , raw-strings-qq
     , sqlite-simple

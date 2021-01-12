@@ -1,4 +1,4 @@
-name:                fingerd
+name:                finger
 version:             0.1.0.0
 github:              "githubuser/fingerd"
 license:             BSD3
@@ -14,23 +14,40 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- text
 - bytestring
 - network
-- raw-strings-qq
 - sqlite-simple
-- text
+- cmdargs
+- raw-strings-qq
+
+library:
+  source-dirs: src
 
 executables:
   fingerd:
     main:                Main.hs
-    source-dirs:         src
+    source-dirs:         app
     ghc-options:
     - -Wall
     - -main-is Main
+    dependencies:
+    - finger
 
   debug:
     main:                Debug.hs
-    source-dirs:         src
+    source-dirs:         app
     ghc-options:
     - -Wall
     - -main-is Debug
+    dependencies:
+    - finger
+
+  useradd:
+    main:                Useradd.hs
+    source-dirs:         app
+    ghc-options:
+    - -Wall
+    - -main-is Useradd
+    dependencies:
+    - finger
