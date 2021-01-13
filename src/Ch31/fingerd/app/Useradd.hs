@@ -6,30 +6,30 @@ module Useradd where
 import qualified Data.Text                     as T
 import           Database
 import           System.Console.CmdArgs
-import           Types                          ( NewUser(..)
-                                                , User(..)
+import           Types                          ( NewUser(NewUser)
+                                                , User(User)
                                                 )
 
 data Useradd = Useradd
-  { user_id             :: Maybe Integer
-  , user_name           :: String
-  , user_shell          :: String
-  , user_home_directory :: String
-  , user_real_name      :: String
-  , user_phone          :: String
+  { userId        :: Maybe Integer
+  , username      :: String
+  , shell         :: String
+  , homeDirectory :: String
+  , realName      :: String
+  , phone         :: String
   }
   deriving (Eq, Show, Data, Typeable)
 
 useradd :: Useradd
 useradd =
   Useradd
-      { user_id             = def &= opt (Nothing :: Maybe Integer) &= help
-                                "The id of the user that should be updated, if any"
-      , user_name           = def &= help "The username of the user"
-      , user_shell          = def &= help "The shell of the user"
-      , user_home_directory = def &= help "The home directory of the user"
-      , user_real_name      = def &= help "The real name of the user"
-      , user_phone          = def &= help "The phone number of the user"
+      { userId        = def &= opt (Nothing :: Maybe Integer) &= help
+                          "The id of the user that should be updated, if any"
+      , username      = def &= help "The username of the user"
+      , shell         = def &= help "The shell of the user"
+      , homeDirectory = def &= help "The home directory of the user"
+      , realName      = def &= help "The real name of the user"
+      , phone         = def &= help "The phone number of the user"
       }
     &= verbosity
     &= help "Add new users to the finger database"
@@ -55,5 +55,5 @@ asUser (Useradd _ usrname shll homeDir realNam phon) usrid = User
 main :: IO ()
 main = do
   usradd <- cmdArgs useradd
-  let maybeId = user_id useradd
+  let maybeId = userId usradd
   maybe (insertNewUser $ asNewUser usradd) (updateUser . asUser usradd) maybeId

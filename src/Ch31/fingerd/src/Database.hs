@@ -37,10 +37,10 @@ insertUser = "INSERT INTO users\
 updateUserQuery :: Query
 updateUserQuery =
   "UPDATE users\
-  \ SET username =      ?\
-  \     shell =         ?\
-  \     homeDirectory = ?\
-  \     realName =      ?\
+  \ SET username =      ?,\
+  \     shell =         ?,\
+  \     homeDirectory = ?,\
+  \     realName =      ?,\
   \     phone =         ?\
   \ WHERE id =          ?"
 
