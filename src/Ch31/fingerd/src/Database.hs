@@ -4,22 +4,50 @@
 
 module Database where
 
-import           Control.Exception
-import           Control.Monad
-import           Data.List
+import           Control.Exception              ( throwIO )
+import           Control.Monad                  ( forever )
+import           Data.List                      ( intersperse )
 import           Data.Text                      ( Text )
 import qualified Data.Text                     as T
-import           Data.Text.Encoding
-import           Data.Typeable
-import           Database.SQLite.Simple
+import           Data.Text.Encoding             ( encodeUtf8
+                                                , decodeUtf8
+                                                )
+import           Database.SQLite.Simple         ( execute
+                                                , execute_
+                                                , open
+                                                , query
+                                                , query_
+                                                , Only(Only)
+                                                , Connection
+                                                , Query
+                                                )
 import qualified Database.SQLite.Simple        as SQLite
-import           Database.SQLite.Simple.Types
-import           Network.Socket
+import           Database.SQLite.Simple.Types   ( Only(Only)
+                                                , Query
+                                                , Null(Null)
+                                                )
+import           Network.Socket                 ( gracefulClose
+                                                , accept
+                                                , Socket
+                                                )
 import           Data.ByteString                ( ByteString )
 import qualified Data.ByteString               as BS
-import           Network.Socket.ByteString
-import           Text.RawString.QQ
-import           Types
+import           Network.Socket.ByteString      ( recv
+                                                , sendAll
+                                                )
+import           Text.RawString.QQ              ( r )
+import           Types                          ( UpdateUserRow
+                                                , NewUserRow
+                                                , DuplicateData(DuplicateData)
+                                                , User(..)
+                                                , NewUser
+                                                  ( newUsername
+                                                  , newShell
+                                                  , newHomeDirectory
+                                                  , newRealName
+                                                  , newphone
+                                                  )
+                                                )
 
 createUsers :: Query
 createUsers = [r|
