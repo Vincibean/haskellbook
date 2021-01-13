@@ -34,13 +34,23 @@ insertUser :: Query
 insertUser = "INSERT INTO users\
   \ VALUES (?, ?, ?, ?, ?, ?)"
 
+updateUserQuery :: Query
+updateUserQuery =
+  "UPDATE users\
+  \ SET username =      ?\
+  \     shell =         ?\
+  \     homeDirectory = ?\
+  \     realName =      ?\
+  \     phone =         ?\
+  \ WHERE id =          ?"
+
 insertNewUser :: NewUser -> IO ()
 insertNewUser usr = do
   conn <- open "finger.db"
   execute conn insertUser row
   SQLite.close conn
  where
-  row :: UserRow
+  row :: NewUserRow
   row =
     ( Null
     , newUsername usr
@@ -48,6 +58,22 @@ insertNewUser usr = do
     , newHomeDirectory usr
     , newRealName usr
     , newphone usr
+    )
+
+updateUser :: User -> IO ()
+updateUser usr = do
+  conn <- open "finger.db"
+  execute conn updateUserQuery row
+  SQLite.close conn
+ where
+  row :: UpdateUserRow
+  row =
+    ( username usr
+    , shell usr
+    , homeDirectory usr
+    , realName usr
+    , phone usr
+    , userId usr
     )
 
 allUsers :: Query
@@ -73,7 +99,7 @@ createDatabase = do
   mapM_ print (rows :: [User])
   SQLite.close conn
  where
-  meRow :: UserRow
+  meRow :: NewUserRow
   meRow =
     (Null, "callen", "/bin/zsh", "/home/callen", "Chris Allen", "555-123-4567")
 

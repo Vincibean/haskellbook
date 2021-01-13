@@ -40,4 +40,8 @@ data DuplicateData = DuplicateData
 
 instance Exception DuplicateData
 
-type UserRow = (Null, Text, Text, Text, Text, Text)
+type UserRow = (Integer, Text, Text, Text, Text, Text)
+
+type NewUserRow = (Null, Text, Text, Text, Text, Text)
+
+type UpdateUserRow = (Text, Text, Text, Text, Text, Integer)
