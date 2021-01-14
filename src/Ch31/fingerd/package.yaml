@@ -51,3 +51,21 @@ executables:
     - -main-is Useradd
     dependencies:
     - finger
+  
+  useradd-client:
+    main:                UseraddClient.hs
+    source-dirs:         app
+    ghc-options:
+    - -Wall
+    - -main-is UseraddClient
+    dependencies:
+    - finger
+  
+  useradd-server:
+    main:                UseraddServer.hs
+    source-dirs:         app
+    ghc-options:
+    - -Wall
+    - -main-is UseraddServer
+    dependencies:
+    - finger

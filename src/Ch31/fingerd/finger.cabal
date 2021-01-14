@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 17ba58ae71978649637f918b72ac45ab39bd797b7d76e79f54d455fb78d722ad
+-- hash: 5921d73564cff0f2111b391df3e9e5ccafd57b5b23fad19daf1e8d0e4c755f26
 
 name:           finger
 version:        0.1.0.0
@@ -48,6 +48,8 @@ executable debug
   other-modules:
       Main
       Useradd
+      UseraddClient
+      UseraddServer
       Paths_finger
   hs-source-dirs:
       app
@@ -68,6 +70,8 @@ executable fingerd
   other-modules:
       Debug
       Useradd
+      UseraddClient
+      UseraddServer
       Paths_finger
   hs-source-dirs:
       app
@@ -88,10 +92,56 @@ executable useradd
   other-modules:
       Debug
       Main
+      UseraddClient
+      UseraddServer
       Paths_finger
   hs-source-dirs:
       app
   ghc-options: -Wall -main-is Useradd
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cmdargs
+    , finger
+    , network
+    , raw-strings-qq
+    , sqlite-simple
+    , text
+  default-language: Haskell2010
+
+executable useradd-client
+  main-is: UseraddClient.hs
+  other-modules:
+      Debug
+      Main
+      Useradd
+      UseraddServer
+      Paths_finger
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -main-is UseraddClient
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cmdargs
+    , finger
+    , network
+    , raw-strings-qq
+    , sqlite-simple
+    , text
+  default-language: Haskell2010
+
+executable useradd-server
+  main-is: UseraddServer.hs
+  other-modules:
+      Debug
+      Main
+      Useradd
+      UseraddClient
+      Paths_finger
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -main-is UseraddServer
   build-depends:
       base >=4.7 && <5
     , bytestring
