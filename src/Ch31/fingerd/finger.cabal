@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5921d73564cff0f2111b391df3e9e5ccafd57b5b23fad19daf1e8d0e4c755f26
+-- hash: 6c46c3a9bac17a01c2bea8f6e2d2c120af1d4a5fd0bcbfa0f4a93915049ce7e8
 
 name:           finger
 version:        0.1.0.0
@@ -46,10 +46,11 @@ library
 executable debug
   main-is: Debug.hs
   other-modules:
+      Fingerd
       Main
       Useradd
       UseraddClient
-      UseraddServer
+      Useraddd
       Paths_finger
   hs-source-dirs:
       app
@@ -66,12 +67,36 @@ executable debug
   default-language: Haskell2010
 
 executable fingerd
+  main-is: Fingerd.hs
+  other-modules:
+      Debug
+      Main
+      Useradd
+      UseraddClient
+      Useraddd
+      Paths_finger
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -main-is Fingerd
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cmdargs
+    , finger
+    , network
+    , raw-strings-qq
+    , sqlite-simple
+    , text
+  default-language: Haskell2010
+
+executable maind
   main-is: Main.hs
   other-modules:
       Debug
+      Fingerd
       Useradd
       UseraddClient
-      UseraddServer
+      Useraddd
       Paths_finger
   hs-source-dirs:
       app
@@ -91,9 +116,10 @@ executable useradd
   main-is: Useradd.hs
   other-modules:
       Debug
+      Fingerd
       Main
       UseraddClient
-      UseraddServer
+      Useraddd
       Paths_finger
   hs-source-dirs:
       app
@@ -113,9 +139,10 @@ executable useradd-client
   main-is: UseraddClient.hs
   other-modules:
       Debug
+      Fingerd
       Main
       Useradd
-      UseraddServer
+      Useraddd
       Paths_finger
   hs-source-dirs:
       app
@@ -131,17 +158,18 @@ executable useradd-client
     , text
   default-language: Haskell2010
 
-executable useradd-server
-  main-is: UseraddServer.hs
+executable useraddd
+  main-is: Useraddd.hs
   other-modules:
       Debug
+      Fingerd
       Main
       Useradd
       UseraddClient
       Paths_finger
   hs-source-dirs:
       app
-  ghc-options: -Wall -main-is UseraddServer
+  ghc-options: -Wall -main-is Useraddd
   build-depends:
       base >=4.7 && <5
     , bytestring

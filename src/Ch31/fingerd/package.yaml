@@ -26,11 +26,11 @@ library:
 
 executables:
   fingerd:
-    main:                Main.hs
+    main:                Fingerd.hs
     source-dirs:         app
     ghc-options:
     - -Wall
-    - -main-is Main
+    - -main-is Fingerd
     dependencies:
     - finger
 
@@ -61,11 +61,20 @@ executables:
     dependencies:
     - finger
   
-  useradd-server:
-    main:                UseraddServer.hs
+  useraddd:
+    main:                Useraddd.hs
     source-dirs:         app
     ghc-options:
     - -Wall
-    - -main-is UseraddServer
+    - -main-is Useraddd
+    dependencies:
+    - finger
+  
+  maind:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -Wall
+    - -main-is Main
     dependencies:
     - finger
