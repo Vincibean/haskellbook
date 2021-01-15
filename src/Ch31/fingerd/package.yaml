@@ -1,16 +1,5 @@
 name:                finger
 version:             0.1.0.0
-github:              "githubuser/fingerd"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2021 Author name here"
-
-extra-source-files:
-- README.md
-- ChangeLog.md
-
-description:         Please see the README on GitHub at <https://github.com/githubuser/fingerd#readme>
 
 dependencies:
 - base >= 4.7 && < 5
