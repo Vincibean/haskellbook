@@ -1,4 +1,4 @@
-module Ch2.Ch2 where
+module Ch02.Ch02 where
 
 -- Exercises: A Head Code
 

@@ -1,4 +1,4 @@
-module Ch3.Print3 where 
+module Ch03.Print3 where 
     
 printSecond :: IO ()
 printSecond = do 

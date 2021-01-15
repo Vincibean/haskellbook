@@ -1,4 +1,4 @@
-module Ch5.Ch5 where
+module Ch05.Ch05 where
 
 -- Exercises: Type Matching
 -- Functions:

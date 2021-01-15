@@ -1,4 +1,4 @@
-module Ch7.Ch7 where
+module Ch07.Ch07 where
 
 -- Grab Bag
 -- 1. Which (two or more) of the following are equivalent?

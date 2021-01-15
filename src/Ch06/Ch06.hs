@@ -1,4 +1,4 @@
-module Ch6.Ch6 where
+module Ch06.Ch06 where
 
 import Data.List (sort)
 

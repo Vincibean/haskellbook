@@ -1,4 +1,4 @@
-module Ch7.Arith4 where
+module Ch07.Arith4 where
     
 -- id :: a -> a
 -- id x = x

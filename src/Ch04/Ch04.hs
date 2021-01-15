@@ -1,4 +1,4 @@
-module Ch4.Ch4 where
+module Ch04.Ch04 where
 
 -- Exercises: Mood Swing
 -- Given the following datatype, answer the following questions:

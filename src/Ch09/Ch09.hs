@@ -1,4 +1,4 @@
-module Ch9.Ch9 where
+module Ch09.Ch09 where
 
 import           Data.Char
 

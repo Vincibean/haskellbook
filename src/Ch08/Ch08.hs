@@ -1,4 +1,4 @@
-module Ch8.Ch8 where
+module Ch08.Ch08 where
 
 -- Intermission: Exercise
 -- Write out the evaluation of the following. It might be a little less noisy if you do so with the form that didn’t use (.).

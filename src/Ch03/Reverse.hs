@@ -1,4 +1,4 @@
-module Ch3.Reverse where
+module Ch03.Reverse where
 
 rvrs :: String -> String
 rvrs x = awesome ++ " " ++ is ++ " " ++ curry

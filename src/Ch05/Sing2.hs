@@ -1,4 +1,4 @@
-module Ch5.Sing2 where
+module Ch05.Sing2 where
 
 fstString :: [Char] -> [Char]
 fstString x = x ++ " in the rain"

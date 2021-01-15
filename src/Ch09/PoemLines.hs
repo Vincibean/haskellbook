@@ -1,6 +1,6 @@
-module Ch9.PoemLines where
+module Ch09.PoemLines where
     
-import Ch9.Ch9 (mySplit)
+import Ch09.Ch09 (mySplit)
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"

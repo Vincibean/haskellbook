@@ -1,4 +1,4 @@
-module Ch8.WordNumber where
+module Ch08.WordNumber where
 
 import           Data.List (intersperse)
 

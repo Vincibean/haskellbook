@@ -1,4 +1,4 @@
-module Ch9.Cipher (caesar, unCaesar) where
+module Ch09.Cipher (caesar, unCaesar) where
 
 import           Data.Char
 

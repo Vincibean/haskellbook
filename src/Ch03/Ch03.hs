@@ -1,4 +1,4 @@
-module Ch3.Ch3 where
+module Ch03.Ch03 where
 
 -- Building Functions
 
