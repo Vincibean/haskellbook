@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6c46c3a9bac17a01c2bea8f6e2d2c120af1d4a5fd0bcbfa0f4a93915049ce7e8
+-- hash: f5b9d76be0386909fbb0ce9455e0a0d4b8a9a6e3566fc72ab3ec1fee139ed8c8
 
 name:           finger
 version:        0.1.0.0
@@ -27,8 +27,9 @@ source-repository head
 
 library
   exposed-modules:
+      Cli
       Database
-      Types
+      Domain
   other-modules:
       Paths_finger
   hs-source-dirs:

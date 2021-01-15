@@ -13,7 +13,7 @@ import Data.Text (Text)
 import qualified Data.Text as T
 import Network.Socket
 import Network.Socket.ByteString (recv, sendAll)
-import Types
+import Domain
 import Unsafe.Coerce ( unsafeCoerce )
 
 main :: IO ()

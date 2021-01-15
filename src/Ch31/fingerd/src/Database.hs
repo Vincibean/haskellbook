@@ -4,7 +4,7 @@
 
 module Database where
 
-import           Control.Exception              ( throwIO )
+import           Control.Exception              ( Exception, throwIO )
 import           Control.Monad                  ( forever )
 import           Data.List                      ( intersperse )
 import           Data.Text                      ( Text )
@@ -12,6 +12,7 @@ import qualified Data.Text                     as T
 import           Data.Text.Encoding             ( encodeUtf8
                                                 , decodeUtf8
                                                 )
+import           Data.Typeable                  ( Typeable )
 import           Database.SQLite.Simple         ( execute
                                                 , execute_
                                                 , open
@@ -36,10 +37,7 @@ import           Network.Socket.ByteString      ( recv
                                                 , sendAll
                                                 )
 import           Text.RawString.QQ              ( r )
-import           Types                          ( UpdateUserRow
-                                                , NewUserRow
-                                                , DuplicateData(DuplicateData)
-                                                , User(..)
+import           Domain                          ( User(..)
                                                 , NewUser
                                                   ( newUsername
                                                   , newShell
@@ -48,6 +46,17 @@ import           Types                          ( UpdateUserRow
                                                   , newphone
                                                   )
                                                 )
+
+data DuplicateData = DuplicateData
+  deriving (Eq, Show, Typeable)
+
+instance Exception DuplicateData
+
+type UserRow = (Integer, Text, Text, Text, Text, Text)
+
+type NewUserRow = (Null, Text, Text, Text, Text, Text)
+
+type UpdateUserRow = (Text, Text, Text, Text, Text, Integer)
 
 createUsers :: Query
 createUsers = [r|

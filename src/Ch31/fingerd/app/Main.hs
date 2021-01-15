@@ -5,6 +5,7 @@ module Main where
 import           Database                       ( handleQueries )
 import           Database.SQLite.Simple         ( open )
 import qualified Database.SQLite.Simple        as SQLite
+import Domain
 import           Network.Socket                 ( setCloseOnExecIfNeeded
                                                 , defaultHints
                                                 , getAddrInfo
@@ -37,7 +38,6 @@ import Data.Text (Text)
 import qualified Data.Text as T
 import Network.Socket
 import Network.Socket.ByteString (recv, sendAll)
-import Types
 import Unsafe.Coerce ( unsafeCoerce )
 
 main :: IO ()

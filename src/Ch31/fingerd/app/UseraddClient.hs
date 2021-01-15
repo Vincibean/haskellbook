@@ -3,6 +3,7 @@
 
 module UseraddClient where
 
+import Cli
 import qualified Control.Exception as E
 import Data.ByteString (ByteString)
 import qualified Data.ByteString.Char8         as B8
@@ -12,39 +13,9 @@ import qualified Data.Text                     as T
 import Network.Socket
 import Network.Socket.ByteString (recv, sendAll)
 import           System.Console.CmdArgs
-import           Types                          ( NewUser(NewUser)
+import           Domain                          ( NewUser(NewUser)
                                                 , User(User)
                                                 )
-
-data Useradd = Useradd
-  { username      :: String
-  , shell         :: String
-  , homeDirectory :: String
-  , realName      :: String
-  , phone         :: String
-  }
-  deriving (Eq, Show, Data, Typeable)
-
-useradd :: Useradd
-useradd =
-  Useradd
-      { username      = def &= help "The username of the user"
-      , shell         = def &= help "The shell of the user"
-      , homeDirectory = def &= help "The home directory of the user"
-      , realName      = def &= help "The real name of the user"
-      , phone         = def &= help "The phone number of the user"
-      }
-    &= verbosity
-    &= help "Add new users to the finger database"
-    &= summary "useradd v0.0.0.1, (C) Vincibean"
-
-asNewUser :: Useradd -> NewUser
-asNewUser (Useradd usrname shll homeDir realNam phon) = NewUser
-  (T.pack usrname)
-  (T.pack shll)
-  (T.pack homeDir)
-  (T.pack realNam)
-  (T.pack phon)
 
 main :: IO ()
 main = do
