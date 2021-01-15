@@ -1,15 +1,14 @@
-{-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE OverloadedStrings #-}
-
 module Useradd where
 
-import Cli
-import           Database
-import           System.Console.CmdArgs
-import           Domain                         ( NewUser(NewUser)
-                                                , User(User)
+import           Cli                            ( asNewUser
+                                                , asUser
+                                                , useradd
+                                                , Useradd(userId)
                                                 )
-
+import           Database                       ( insertNewUser
+                                                , updateUser
+                                                )
+import           System.Console.CmdArgs         ( cmdArgs )
 
 main :: IO ()
 main = do

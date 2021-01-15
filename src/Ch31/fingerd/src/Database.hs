@@ -4,7 +4,9 @@
 
 module Database where
 
-import           Control.Exception              ( Exception, throwIO )
+import           Control.Exception              ( Exception
+                                                , throwIO
+                                                )
 import           Control.Monad                  ( forever )
 import           Data.List                      ( intersperse )
 import           Data.Text                      ( Text )
@@ -37,7 +39,7 @@ import           Network.Socket.ByteString      ( recv
                                                 , sendAll
                                                 )
 import           Text.RawString.QQ              ( r )
-import           Domain                          ( User(..)
+import           Domain                         ( User(..)
                                                 , NewUser
                                                   ( newUsername
                                                   , newShell
